@@ -1,4 +1,5 @@
 ﻿using System;
+using MoneyBuster.Data;
 using MoneyBuster.Manager;
 using UnityEngine;
 
@@ -6,10 +7,7 @@ namespace MoneyBuster.Gameplay
 {
     public abstract class Holdable : MonoBehaviour
     {
-        private const float Speed = 10f;
-        
-        [SerializeField] protected Vector3 _holdOffset;
-        [SerializeField] protected Vector3 _holdRotation;
+        [SerializeField] protected HoldableData _data;
         
         protected Vector3 _initialPosition;
         protected Quaternion _initialRotation;
@@ -49,15 +47,15 @@ namespace MoneyBuster.Gameplay
                 // Checking if we touching ground
                 if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out var hitInfo, 10f, LayerMask.GetMask("Ground")))
                 {
-                    transform.position = Vector3.Lerp(transform.position, hitInfo.point + _holdOffset, Time.deltaTime * Speed);
+                    transform.position = Vector3.Lerp(transform.position, hitInfo.point + _data.offset, Time.deltaTime * _data.speed);
                 }
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, _initialPosition, Time.deltaTime * Speed);
+                transform.position = Vector3.Lerp(transform.position, _initialPosition, Time.deltaTime * _data.speed);
             }
             
-            transform.rotation = Quaternion.Lerp(transform.rotation, IsHolding ? Quaternion.Euler(_holdRotation) : _initialRotation, Time.deltaTime * Speed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, IsHolding ? Quaternion.Euler(_data.rotation) : _initialRotation, Time.deltaTime * _data.speed);
         }
     }
 }
