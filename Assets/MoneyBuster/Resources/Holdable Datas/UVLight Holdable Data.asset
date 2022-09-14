@@ -22,5 +22,5 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   speed: 10
-  offset: {x: 0, y: 1, z: 0}
+  offset: {x: 0, y: 1.25, z: 0}
   rotation: {x: -336.513, y: -58.441, z: 113.039}

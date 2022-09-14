@@ -30,6 +30,7 @@ namespace MoneyBuster.Gameplay
         }
 
         protected abstract void OnHold();
+        protected abstract void OnHoldUpdate();
         protected abstract void OnLeave();
         
         protected virtual void Awake()
@@ -48,6 +49,7 @@ namespace MoneyBuster.Gameplay
                 if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out var hitInfo, 10f, LayerMask.GetMask("Ground")))
                 {
                     transform.position = Vector3.Lerp(transform.position, hitInfo.point + _data.offset, Time.deltaTime * _data.speed);
+                    OnHoldUpdate();
                 }
             }
             else

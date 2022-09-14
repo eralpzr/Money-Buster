@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 643009355}
   m_Layer: 0
-  m_Name: Money Root
+  m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1399913266}
-  - {fileID: 1922133927}
+  - {fileID: 1815911396}
   m_Father: {fileID: 911588367}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471391cc5fb74ec68e07e375a8a17f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: {fileID: 1399913269}
+  money: {fileID: 0}
 --- !u!1 &1399913265
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,9 +213,8 @@ GameObject:
   - component: {fileID: 1399913266}
   - component: {fileID: 1399913268}
   - component: {fileID: 1399913267}
-  - component: {fileID: 1399913269}
   m_Layer: 8
-  m_Name: Money
+  m_Name: Money Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,21 +285,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399913265}
   m_Mesh: {fileID: 4300000, guid: 724e400c2f2f2418d8145bc542f9d950, type: 3}
---- !u!114 &1399913269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399913265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c66dc4b8474afc9479e02dbe915cfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 885a0d936c53fc742b5853a7d55dc185, type: 2}
-  isFake: 1
---- !u!1 &1922133926
+--- !u!1 &1815911395
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,38 +293,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1922133927}
-  - component: {fileID: 1922133929}
-  - component: {fileID: 1922133928}
-  m_Layer: 9
-  m_Name: Doodled Money
+  - component: {fileID: 1815911396}
+  - component: {fileID: 1815911399}
+  - component: {fileID: 1815911398}
+  m_Layer: 8
+  m_Name: UV Light Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1922133927
+--- !u!4 &1815911396
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922133926}
+  m_GameObject: {fileID: 1815911395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.00000011920929, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 643009355}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!23 &1922133928
+--- !u!23 &1815911398
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922133926}
+  m_GameObject: {fileID: 1815911395}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 0
@@ -353,7 +338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7cc1656d83232c04993820ade09e7191, type: 2}
+  - {fileID: 2100000, guid: b08debc60f1c55e4f8289cc6f071236f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,11 +360,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1922133929
+--- !u!33 &1815911399
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922133926}
+  m_GameObject: {fileID: 1815911395}
   m_Mesh: {fileID: 4300000, guid: 724e400c2f2f2418d8145bc542f9d950, type: 3}

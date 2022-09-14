@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MoneyBuster/Scenes/Master Scene.unity
+    guid: e0707c1b9ec9c5d40ae08c0e0fe192e8
+  - enabled: 1
+    path: Assets/MoneyBuster/Scenes/Levels/Level 1.unity
+    guid: facbf9fd17d9aa44683bf70474cf56ad
+  - enabled: 1
+    path: Assets/MoneyBuster/Scenes/Levels/Level 2.unity
+    guid: ab00d9d702090834c81f39f7ca3c9a53
+  - enabled: 1
+    path: Assets/MoneyBuster/Scenes/Levels/Level 3.unity
+    guid: dda3df05400ccec4b90253847378b966
   m_configObjects: {}

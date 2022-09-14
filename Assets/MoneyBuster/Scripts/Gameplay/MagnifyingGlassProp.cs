@@ -2,9 +2,14 @@
 
 namespace MoneyBuster.Gameplay
 {
-    public class MagnifyingGlassProp : Holdable
+    public sealed class MagnifyingGlassProp : Holdable
     {
         protected override void OnHold()
+        {
+            
+        }
+
+        protected override void OnHoldUpdate()
         {
             
         }

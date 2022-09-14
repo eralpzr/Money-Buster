@@ -11,6 +11,11 @@ namespace MoneyBuster.Gameplay
             
         }
 
+        protected override void OnHoldUpdate()
+        {
+            
+        }
+
         protected override void OnLeave()
         {
             
