@@ -229,5 +229,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Money
       objectReference: {fileID: 0}
+    - target: {fileID: 6660977715982269722, guid: d6d6de34810ac624e96d2eb0e0e6095d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6d6de34810ac624e96d2eb0e0e6095d, type: 3}

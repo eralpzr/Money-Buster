@@ -19,5 +19,10 @@ namespace MoneyBuster.Gameplay
             _animator.SetTrigger("AddMoney");
             return tweener;
         }
+
+        public void TriggerAnimation(string trigger)
+        {
+            _animator.SetTrigger(trigger);
+        }
     }
 }

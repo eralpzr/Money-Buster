@@ -5,6 +5,8 @@ namespace MoneyBuster.Gameplay
 {
     public sealed class Money : Holdable
     {
+        private const float ClosestDistance = 2f;
+        
         public bool isFake;
         
         protected override void OnHold()
@@ -14,9 +16,13 @@ namespace MoneyBuster.Gameplay
 
         protected override void OnHoldUpdate()
         {
-            var closestPuttable = GetClosestPuttable(2.5f);
+            var closestPuttable = GetClosestPuttable(ClosestDistance);
             if (closestPuttable == null)
+            {
+                UIManager.Instance.takeText.gameObject.SetActive(false);
+                UIManager.Instance.shredText.gameObject.SetActive(false);
                 return;
+            }
             
             if (closestPuttable is PaperShredder)
             {
@@ -35,18 +41,20 @@ namespace MoneyBuster.Gameplay
             UIManager.Instance.shredText.gameObject.SetActive(false);
             UIManager.Instance.takeText.gameObject.SetActive(false);
             
-            var closestPuttable = GetClosestPuttable(2.5f);
+            var closestPuttable = GetClosestPuttable(ClosestDistance);
             if (closestPuttable == null)
                 return;
 
-            var failed = isFake && closestPuttable is PaperShredder;
+            var success = (isFake && closestPuttable is PaperShredder) || (!isFake && closestPuttable is MoneyStack);
             var tweener = closestPuttable.Put(this);
             tweener.onComplete += () =>
                                   {
-                                      GameManager.Instance.StartCoroutine(GameManager.Instance.CompleteLevelCoroutine(failed));
+                                      GameManager.Instance.StartCoroutine(GameManager.Instance.CompleteLevelCoroutine(!success));
                                       Destroy(gameObject);
                                   };
 
+            GameManager.Instance.GiveScore(success ? 10 : -10);
+            
             enabled = false;
         }
 

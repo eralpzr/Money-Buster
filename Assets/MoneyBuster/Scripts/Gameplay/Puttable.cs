@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using MoneyBuster.Manager;
 using UnityEngine;
 
 namespace MoneyBuster.Gameplay
@@ -15,7 +16,6 @@ namespace MoneyBuster.Gameplay
         {
             money.transform.position = transform.TransformPoint(fromPosition);
             money.transform.rotation = Quaternion.Euler(fromRotation);
-
             return money.transform.DOMove(transform.TransformPoint(toPosition), duration);
         }
 

@@ -102,22 +102,42 @@ namespace MoneyBuster.Manager
                 _currentLevelScene = null;
             }
             
+            moneyStack.TriggerAnimation("LevelStart");
+            UIManager.Instance.gamePanel.gameObject.SetActive(true);
+            UIManager.Instance.levelCompletedPanel.gameObject.SetActive(false);
+
             SceneManager.LoadScene(_currentLevelScene = levelScene, LoadSceneMode.Additive);
+            RefreshLevelText();
         }
         
         public IEnumerator CompleteLevelCoroutine(bool failed)
         {
             GameState = GameState.Completed;
-            
-            if (!failed && !isDebug)
-            {
-                Progression.Level++;
-            }
 
-            Progression.Score += failed ? -10 : 10;
+            if (!isDebug)
+                Progression.Level++;
+
+            yield return new WaitForSeconds(1.1f);
             
-            yield return new WaitForSeconds(3f);
+            moneyStack.TriggerAnimation("LevelCompleted");
+            UIManager.Instance.gamePanel.gameObject.SetActive(false);
+            UIManager.Instance.levelCompletedPanel.gameObject.SetActive(true);
+            
+            yield return new WaitForSeconds(1.5f);
+            
             Start();
+        }
+
+        public void RefreshLevelText()
+        {
+            UIManager.Instance.levelText.Text = $"Level {Progression.Level}\n{Progression.Score}";
+        }
+
+        public void GiveScore(int score)
+        {
+            Progression.Score += score;
+            UIManager.Instance.scoreText.Show(score < 0 ? "OH NO!" : "NICE", score);
+            RefreshLevelText();
         }
     }
 }
