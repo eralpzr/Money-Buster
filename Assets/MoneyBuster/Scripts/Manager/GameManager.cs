@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using MoneyBuster.Enums;
 using MoneyBuster.Gameplay;
 using UnityEngine;
@@ -12,8 +13,11 @@ namespace MoneyBuster.Manager
         public bool isDebug;
         public int debugLevel;
         
-        [Space] public Camera MainCamera;
-        [SerializeField] private string[] _levels;
+        [Space] public Camera mainCamera;
+        public PaperShredder paperShredder;
+        public MoneyStack moneyStack;
+        
+        [Space, SerializeField] private string[] _levels;
 
         private Holdable _currentHoldable;
         private string _currentLevelScene;
@@ -51,7 +55,7 @@ namespace MoneyBuster.Manager
                     return;
 
                 // Checking if we touch any holdable object
-                if (Physics.Raycast(MainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo, 10f, LayerMask.GetMask("Holdable")))
+                if (Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo, 10f, LayerMask.GetMask("Holdable")))
                 {
                     _currentHoldable = hitInfo.transform.GetComponent<Holdable>();
                     _currentHoldable.IsHolding = true;
@@ -83,7 +87,7 @@ namespace MoneyBuster.Manager
                 GameState = GameState.Playing;
             }
         }
-
+        
         public void StartLevel(string levelScene)
         {
             // Unload if any active level scene and start new level
@@ -99,6 +103,21 @@ namespace MoneyBuster.Manager
             }
             
             SceneManager.LoadScene(_currentLevelScene = levelScene, LoadSceneMode.Additive);
+        }
+        
+        public IEnumerator CompleteLevelCoroutine(bool failed)
+        {
+            GameState = GameState.Completed;
+            
+            if (!failed && !isDebug)
+            {
+                Progression.Level++;
+            }
+
+            Progression.Score += failed ? -10 : 10;
+            
+            yield return new WaitForSeconds(3f);
+            Start();
         }
     }
 }

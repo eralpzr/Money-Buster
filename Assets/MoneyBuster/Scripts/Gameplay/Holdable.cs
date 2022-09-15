@@ -35,7 +35,7 @@ namespace MoneyBuster.Gameplay
         
         protected virtual void Awake()
         {
-            _camera = GameManager.Instance.MainCamera;
+            _camera = GameManager.Instance.mainCamera;
 
             _initialPosition = transform.position;
             _initialRotation = transform.rotation;

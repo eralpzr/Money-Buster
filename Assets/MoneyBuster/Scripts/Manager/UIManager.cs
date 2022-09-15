@@ -8,5 +8,8 @@ namespace MoneyBuster.Manager
         public UIObject levelCompletedPanel;
         public UIObject levelFailedPanel;
         public UIObject gamePanel;
+
+        [Space] public UIObject shredText;
+        public UIObject takeText;
     }
 }
