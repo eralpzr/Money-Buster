@@ -1,11 +1,12 @@
 ﻿using System;
 using DG.Tweening;
+using MoneyBuster.Interfaces;
 using MoneyBuster.Manager;
 using UnityEngine;
 
 namespace MoneyBuster.Gameplay
 {
-    public abstract class Puttable : MonoBehaviour
+    public abstract class Puttable : MonoBehaviour, IPuttable
     {
         [SerializeField] protected float duration;
         [SerializeField] protected Vector3 fromPosition;

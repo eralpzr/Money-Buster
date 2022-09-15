@@ -1,4 +1,5 @@
-﻿using MoneyBuster.Manager;
+﻿using MoneyBuster.Interfaces;
+using MoneyBuster.Manager;
 using UnityEngine;
 
 namespace MoneyBuster.Gameplay
@@ -58,14 +59,14 @@ namespace MoneyBuster.Gameplay
             enabled = false;
         }
 
-        private Puttable GetClosestPuttable(float distance)
+        private IPuttable GetClosestPuttable(float distance)
         {
             var shredderDistance = Vector3.Distance(transform.position, GameManager.Instance.paperShredder.transform.position);
             var stackDistance = Vector3.Distance(transform.position, GameManager.Instance.moneyStack.transform.position);
 
             // If we close to both of them, select the closest one.
             if (shredderDistance < distance && stackDistance < distance)
-                return shredderDistance < stackDistance ? GameManager.Instance.paperShredder : GameManager.Instance.moneyStack;
+                return shredderDistance < stackDistance ? (IPuttable) GameManager.Instance.paperShredder : GameManager.Instance.moneyStack;
             
             if (shredderDistance < distance)
                 return GameManager.Instance.paperShredder;
